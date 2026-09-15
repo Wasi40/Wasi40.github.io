@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarif Bhuiyan — Résumé Takeover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bangers&family=Bebas+Neue&family=Permanent+Marker&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --arby-red:#D62B1F;
+    --arby-orange:#F26522;
+    --arby-yellow:#FFC72C;
+    --hat-black:#151313;
+    --paper:#fff7e8;
+    --ink:#1c1210;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(255,199,44,.5), transparent 40%),
+      radial-gradient(circle at 85% 30%, rgba(255,255,255,.15), transparent 35%),
+      linear-gradient(160deg, var(--arby-red) 0%, #8f0f0a 45%, var(--hat-black) 100%);
+    background-attachment: fixed;
+    font-family:'Oswald', sans-serif;
+    color:var(--paper);
+    padding: 0 0 60px;
+    overflow-x:hidden;
+  }
+
+  /* chaos noise overlay */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0 2px, transparent 2px 6px);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .wrap{ position:relative; z-index:1; max-width: 900px; margin:0 auto; padding: 18px; }
+
+  /* ===== HEADER BANNER ===== */
+  .banner{
+    position:relative;
+    border:6px solid var(--arby-yellow);
+    outline: 3px dashed var(--hat-black);
+    outline-offset: -14px;
+    background: linear-gradient(135deg, var(--arby-orange), var(--arby-red) 60%, #6e0a06);
+    padding: 26px 16px 34px;
+    text-align:center;
+    transform: rotate(-1deg);
+    box-shadow: 0 10px 0 rgba(0,0,0,.35), 0 18px 30px rgba(0,0,0,.5);
+    margin-top: 22px;
+  }
+  .eyebrow{
+    font-family:'Permanent Marker', cursive;
+    font-size: clamp(14px, 3vw, 20px);
+    color: var(--arby-yellow);
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0 #000;
+    transform: rotate(2deg);
+    display:inline-block;
+    margin-bottom: 6px;
+  }
+  h1.title{
+    font-family:'Bangers', cursive;
+    font-size: clamp(40px, 9vw, 84px);
+    line-height: .95;
+    margin: 4px 0 0;
+    letter-spacing: 2px;
+    color: var(--arby-yellow);
+    -webkit-text-stroke: 3px var(--hat-black);
+    text-shadow:
+      5px 5px 0 var(--hat-black),
+      5px 5px 0 var(--hat-black),
+      0 0 26px rgba(255,199,44,.6);
+  }
+  .subtitle{
+    font-family:'Anton', sans-serif;
+    font-size: clamp(15px, 3.4vw, 24px);
+    color:#fff;
+    background: var(--hat-black);
+    display:inline-block;
+    padding: 6px 16px;
+    margin-top: 12px;
+    transform: rotate(1.4deg);
+    box-shadow: 4px 4px 0 var(--arby-yellow);
+    letter-spacing: 1px;
+  }
+  .hat-icon{
+    font-size: clamp(34px, 7vw, 56px);
+    display:block;
+    filter: drop-shadow(3px 3px 0 #000);
+    margin-bottom: 6px;
+  }
+  .stamp{
+    position:absolute;
+    font-family:'Permanent Marker', cursive;
+    background: var(--arby-yellow);
+    color: var(--hat-black);
+    padding: 6px 12px;
+    border: 3px solid var(--hat-black);
+    border-radius: 50%;
+    font-size: 13px;
+    text-align:center;
+    line-height:1.1;
+  }
+  .stamp.one{ top:-18px; right:-10px; transform: rotate(14deg); }
+  .stamp.two{ bottom:-16px; left:-14px; transform: rotate(-16deg); background:#fff; }
+
+  /* ===== RULES FLYER BOX ===== */
+  .rules{
+    margin: 26px 4px 0;
+    background: repeating-linear-gradient(-8deg, var(--arby-yellow), var(--arby-yellow) 14px, #fff 14px, #fff 28px);
+    border: 5px solid var(--hat-black);
+    padding: 16px 18px;
+    transform: rotate(0.6deg);
+    box-shadow: 8px 8px 0 rgba(0,0,0,.4);
+  }
+  .rules h2{
+    font-family:'Bangers', cursive;
+    font-size: clamp(22px, 5vw, 34px);
+    background: var(--hat-black);
+    color: var(--arby-red);
+    display:inline-block;
+    padding: 4px 14px;
+    margin: -30px 0 14px;
+    transform: rotate(-2deg);
+    box-shadow: 3px 3px 0 var(--arby-red);
+  }
+  .rules ul{
+    margin:0; padding-left: 22px; color: var(--hat-black);
+    font-family:'Oswald', sans-serif;
+    font-weight:600;
+    background: var(--paper);
+    border: 3px dashed var(--hat-black);
+    padding: 14px 14px 14px 34px;
+  }
+  .rules li{ margin-bottom: 8px; font-size: 15px; }
+
+  /* ===== SECTION CARD ===== */
+  .card{
+    margin: 26px 4px 0;
+    background: var(--paper);
+    color: var(--ink);
+    border: 5px solid var(--hat-black);
+    box-shadow: 8px 8px 0 var(--arby-orange), 8px 8px 0 var(--arby-orange);
+    padding: 20px 20px 24px;
+    position:relative;
+  }
+  .card.tilt-l{ transform: rotate(-0.6deg); }
+  .card.tilt-r{ transform: rotate(0.5deg); }
+
+  .card h2{
+    font-family:'Bangers', cursive;
+    font-size: clamp(26px, 6vw, 40px);
+    color: var(--arby-red);
+    -webkit-text-stroke: 1.5px var(--hat-black);
+    margin: 0 0 4px;
+    letter-spacing:1px;
+  }
+  .card h2 .flame{ -webkit-text-stroke:0; }
+
+  .divider{
+    height: 6px;
+    background: repeating-linear-gradient(90deg, var(--arby-red) 0 10px, var(--arby-yellow) 10px 20px);
+    margin: 6px 0 16px;
+    border: 2px solid var(--hat-black);
+  }
+
+  .bio{
+    font-size: 16px;
+    line-height:1.55;
+    font-weight: 500;
+  }
+  .bio .highlight{
+    background: var(--arby-yellow);
+    padding: 0 4px;
+    font-weight:700;
+  }
+  .location-tag{
+    display:inline-block;
+    margin-top: 12px;
+    font-family:'Permanent Marker', cursive;
+    background: var(--arby-red);
+    color:#fff;
+    padding: 5px 12px;
+    transform: rotate(-2deg);
+    font-size: 14px;
+  }
+
+  /* education entries */
+  .edu-entry{
+    border-left: 6px solid var(--arby-orange);
+    background: #fff;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    position:relative;
+  }
+  .edu-entry::before{
+    content:"🍔";
+    position:absolute;
+    left:-19px; top: 8px;
+    font-size: 18px;
+    filter: drop-shadow(1px 1px 0 #000);
+  }
+  .edu-school{
+    font-family:'Anton', sans-serif;
+    font-size: 18px;
+    color: var(--hat-black);
+  }
+  .edu-deg{ font-size: 14px; font-weight:600; }
+  .edu-dates{
+    display:inline-block;
+    font-family:'Permanent Marker', cursive;
+    font-size: 12.5px;
+    color: var(--arby-red);
+    margin-top: 3px;
+  }
+
+  /* skills / languages chips */
+  .chip-row{ display:flex; flex-wrap:wrap; gap: 10px; }
+  .chip{
+    font-family:'Anton', sans-serif;
+    font-size: 14px;
+    background: var(--hat-black);
+    color: var(--arby-yellow);
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 2px solid var(--arby-red);
+    transform: rotate(-1deg);
+    white-space:nowrap;
+  }
+  .chip.alt{ background: var(--arby-orange); color:#fff; border-color: var(--hat-black); transform: rotate(1.2deg); }
+  .chip small{ opacity:.85; font-weight:400; }
+
+  .lang-level{ font-size: 11px; opacity:.8; }
+
+  /* contact / cert footer card */
+  .footer-card{
+    text-align:center;
+  }
+  .contact-btn{
+    display:inline-block;
+    font-family:'Bangers', cursive;
+    font-size: clamp(18px, 4vw, 26px);
+    letter-spacing:1px;
+    background: var(--arby-yellow);
+    color: var(--hat-black);
+    padding: 12px 26px;
+    border: 4px solid var(--hat-black);
+    margin: 8px 6px;
+    box-shadow: 5px 5px 0 var(--arby-red);
+    text-decoration:none;
+  }
+  .cert-line{
+    margin-top: 16px;
+    font-family:'Permanent Marker', cursive;
+    color: var(--hat-black);
+    font-size: 14px;
+  }
+
+  .meme-footer{
+    text-align:center;
+    margin-top: 34px;
+    padding: 0 10px;
+  }
+  .meme-footer p{
+    font-family:'Bangers', cursive;
+    font-size: clamp(20px, 5vw, 32px);
+    color: var(--arby-yellow);
+    -webkit-text-stroke: 2px var(--hat-black);
+    letter-spacing:1px;
+    margin: 4px 0;
+    transform: rotate(-1deg);
+  }
+  .meme-footer .small{
+    font-family:'Oswald', sans-serif;
+    -webkit-text-stroke: 0;
+    font-size: 13px;
+    color: #ffe6c2;
+    letter-spacing: normal;
+  }
+
+  @media (max-width:480px){
+    .card{ padding:16px 14px 20px; }
+    .rules{ padding: 14px 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="banner">
+    <div class="stamp one">100%<br>REAL<br>ENGINEER</div>
+    <span class="eyebrow">🍟 IT'S A TAKEOVER 🍟</span>
+    <span class="hat-icon">🎩🔥🍔</span>
+    <h1 class="title">TARIF BHUIYAN</h1>
+    <div class="subtitle">MEAT MOUNTAIN RÉSUMÉ TAKEOVER</div>
+    <div class="stamp two">RULES<br>APPLY</div>
+  </div>
+
+  <div class="rules">
+    <h2>OFFICIAL RULES</h2>
+    <ul>
+      <li>NO REFUNDS on this résumé. It is FREE and it is FIRE.</li>
+      <li>Must bring own curly fries to interview.</li>
+      <li>Résumé valid in San Jose, CA and all Meat Mountain adjacent territories.</li>
+      <li>Rod Wave not affiliated, but vibes are mandatory.</li>
+      <li>Hiring managers must remove hat before reading Education section.</li>
+    </ul>
+  </div>
+
+  <div class="card tilt-l">
+    <h2><span class="flame">🔥</span> WHO IS THIS GUY</h2>
+    <div class="divider"></div>
+    <p class="bio">
+      I'm an <span class="highlight">incoming Industrial Engineering junior at SJSU</span> who loves
+      working at the intersection of <span class="highlight">code and physical design</span>.
+      My background mixes advanced math and CAD modeling with software development.
+    </p>
+    <span class="location-tag">📍 San Jose, California, United States</span>
+  </div>
+
+  <div class="card tilt-r">
+    <h2>📚 THE EDUCATION MOUNTAIN</h2>
+    <div class="divider"></div>
+
+    <div class="edu-entry">
+      <div class="edu-school">San José State University</div>
+      <div class="edu-deg">Industrial Engineer, Industrial Engineering</div>
+      <div class="edu-dates">AUG 2026 — DEC 2027</div>
+    </div>
+
+    <div class="edu-entry">
+      <div class="edu-school">De Anza College</div>
+      <div class="edu-deg">Mathematics, Mathematics</div>
+      <div class="edu-dates">SEP 2024 — DEC 2026</div>
+    </div>
+
+    <div class="edu-entry">
+      <div class="edu-school">Virginia Tech</div>
+      <div class="edu-deg">Electrical and Electronics Engineering</div>
+      <div class="edu-dates">AUG 2022 — MAY 2024</div>
+    </div>
+
+    <div class="edu-entry">
+      <div class="edu-school">Lynbrook High School</div>
+      <div class="edu-deg">High School Diploma, Humanities/Humanistic Studies</div>
+      <div class="edu-dates">2019 — 2022</div>
+    </div>
+
+    <div class="edu-entry">
+      <div class="edu-school">Adrian Wilcox High School</div>
+      <div class="edu-dates">2018 — 2019</div>
+    </div>
+  </div>
+
+  <div class="card tilt-l">
+    <h2>🗣️ LANGUAGE ARSENAL</h2>
+    <div class="divider"></div>
+    <div class="chip-row">
+      <span class="chip">ENGLISH <small>· Native/Bilingual</small></span>
+      <span class="chip">FRENCH <small>· Native/Bilingual</small></span>
+      <span class="chip alt">BENGALI <small>· Professional Working</small></span>
+      <span class="chip alt">HINDI <small>· Elementary</small></span>
+      <span class="chip alt">URDU <small>· Elementary</small></span>
+    </div>
+  </div>
+
+  <div class="card tilt-r">
+    <h2>🛠️ TOP SKILLS</h2>
+    <div class="divider"></div>
+    <div class="chip-row">
+      <span class="chip">FRENCH</span>
+      <span class="chip alt">ENGLISH → FRENCH</span>
+      <span class="chip alt">FRENCH → ENGLISH</span>
+    </div>
+  </div>
+
+  <div class="card footer-card">
+    <h2>📞 GET AT ME</h2>
+    <div class="divider"></div>
+    <a class="contact-btn" href="mailto:tarifwasi40@gmail.com">✉️ tarifwasi40@gmail.com</a><br>
+    <a class="contact-btn" href="https://www.linkedin.com/in/tarif-bhuiyan-a01a42212/" target="_blank" rel="noopener">💼 LINKEDIN</a>
+    <div class="cert-line">🏆 Certified: State Seal of Biliteracy — French</div>
+  </div>
+
+  <div class="meme-footer">
+    <p>THIS HAS BEEN A MEAT MOUNTAIN PRODUCTION</p>
+    <p class="small">no Arby's, Rod Wave, or curly fries were harmed making this résumé</p>
+  </div>
+
+</div>
+</body>
+</html>
